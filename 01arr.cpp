@@ -46,9 +46,20 @@ int main(){
     
     // 动态数组：动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装，让我们使用起来更方便而已。
     vector<int> arr;
-
+    for(int i = 0; i < 10; i++){
+        arr.push_back(i);
+    }
     
-    cout << arr[4] << endl;
+    arr.insert(arr.begin() + 2, 666);
+    arr.insert(arr.begin(), -1);
+
+    arr.pop_back();
+    arr.erase(arr.begin() + 2);
+    int a = arr[0];
+    arr[0] = 100;
+    int index = find(arr.begin(), arr.end(), 666) - arr.begin();
+
+    cout << index << endl;
     
     return 0;
     

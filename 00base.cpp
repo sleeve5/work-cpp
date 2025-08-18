@@ -42,7 +42,7 @@ int main()
     intVec v6(move(v4));            // 移动构造
 
     vector<int> arr;
-    for(int i = 0; i < 10; i++){
+    for (int i = 0; i < 10; i++) {
         arr.push_back(i);               // 尾进
     }
     arr.resize(5);                      // 改元素数量size

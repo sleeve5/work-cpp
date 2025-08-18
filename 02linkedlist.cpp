@@ -10,7 +10,7 @@ class ListNode {
 };
 
 // 将数组转化为单链表
-ListNode* createLinkedList(std::vector<int> arr) {
+ListNode* createLinkedList(const vector<int> &arr) {
         if (arr.empty()){
             return nullptr;
         }
@@ -23,25 +23,25 @@ ListNode* createLinkedList(std::vector<int> arr) {
         return head;
     }
 
+void printList(ListNode* node, string msg){
+    cout << endl << msg << endl;
+    for(ListNode* p = node; p != nullptr; p = p->next){
+        cout << p->val << "  ";
+    }
+    cout << endl;
+}
+
 int main(){
     // 数组转为链表
     vector<int> arr{1, 2, 3, 4, 5};
     ListNode* head =  createLinkedList(arr);
-    cout << "linked list:" << endl;
-    for (ListNode* p = head; p != nullptr; p = p->next){
-        cout << p->val << "  ";
-    }
-    cout << endl;
+    printList(head, "linked list:");
 
     // // 头部插入
     // ListNode* headNode = new ListNode(-1);
     // headNode->next = head;
     // head = headNode;
-    // cout << "linked list adding head:" << endl;
-    // for (ListNode* p = head; p != nullptr; p = p->next){
-    //     cout << p->val << "  ";
-    // }
-    // cout << endl;
+    // printList(head, "linked list adding head:");
 
     // // 尾部插入
     // ListNode* p = head;
@@ -50,11 +50,7 @@ int main(){
     // }
     // ListNode* headNode =  new ListNode(7);
     // p->next = headNode;
-    // cout << "linked list adding tail:" << endl;
-    // for (ListNode* p = head; p != nullptr; p = p->next){
-    //     cout << p->val << "  ";
-    // }
-    // cout << endl;
+    // printList(head, "linked list adding tail:");
 
     // // 中间插入，在第三个节点后面添加666
     // ListNode* p = head;
@@ -64,20 +60,12 @@ int main(){
     // ListNode* middleNode = new ListNode(666);
     // middleNode->next = p->next;
     // p->next = middleNode;
-    // cout << "linked list adding middle:" << endl;
-    // for (ListNode* p = head; p != nullptr; p = p->next){
-    //     cout << p->val << "  ";
-    // }
-    // cout << endl;
+    // printList(head, "linked list adding after the 3rd:");
 
     // // 头部删除
     // ListNode* p = head;
     // head = head->next;
-    // cout << "linked list deleting head:" << endl;
-    // for (ListNode* p = head; p != nullptr; p = p->next){
-    //     cout << p->val << "  ";
-    // }
-    // cout << endl;
+    // printList(head, "linked list deleting head:");
 
     // // 尾部删除
     // ListNode* p = head;
@@ -85,24 +73,17 @@ int main(){
     //     p = p->next;
     // }
     // p->next = nullptr;
-    // cout << "linked list deleting tail:" << endl;
-    // for (ListNode* p = head; p != nullptr; p = p->next){
-    //     cout << p->val << "  ";
-    // }
-    // cout << endl;
+    // cout <<  << endl;
+    // printList(head, "linked list deleting tail:");
 
-    // // 删除，删第四个节点
+    // // 中间删除，删第四个节点
     // ListNode* p = head;
     // for(int i = 0; i < 2; i++) {
     //     p = p->next;
     // }
     // p->next = p->next->next;
-    // cout << "linked list deleting the 4th:" << endl;
-    // for (ListNode* p = head; p != nullptr; p = p->next){
-    //     cout << p->val << "  ";
-    // }
-    // cout << endl;
+    // printList(head, "linked list deleting the 4th:");
+
     return 0;
     
 }
-

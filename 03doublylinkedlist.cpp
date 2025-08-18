@@ -2,21 +2,21 @@
 using namespace std;
 
 // 双链表
-class DoublyListNode{
+class DoublyListNode {
     public:
         int val;
         DoublyListNode *next, *prev;
-        DoublyListNode(int x): val(x), next(nullptr), prev(nullptr){}
+        DoublyListNode(int x): val(x), next(nullptr), prev(nullptr) {}
 };
 
 // 数组转双链表
-DoublyListNode* createDoublyListNode(const vector<int>& arr){
-    if (arr.size() == 0){
+DoublyListNode* createDoublyListNode(const vector<int>& arr) {
+    if (arr.size() == 0) {
         return nullptr;
     }
     DoublyListNode* head = new DoublyListNode(arr[0]);
     DoublyListNode* cur = head;
-    for (int i = 1; i < arr.size(); i++){
+    for (int i = 1; i < arr.size(); i++) {
         DoublyListNode* newNode = new DoublyListNode(arr[i]);
         cur->next = newNode;
         newNode->prev = cur;
@@ -26,18 +26,18 @@ DoublyListNode* createDoublyListNode(const vector<int>& arr){
 }
 
 // 正向打印双链表
-void printListForward(DoublyListNode* headNode, string msg){
+void printListForward(DoublyListNode* headNode, string msg) {
     cout << endl << msg << endl;
-    for (DoublyListNode* p = headNode; p != nullptr; p = p->next){
+    for (DoublyListNode* p = headNode; p != nullptr; p = p->next) {
         cout << p->val << "  ";
     }
     cout << endl;
 }
 
 // 反向打印双链表
-void printListBackward(DoublyListNode* tailNode, string msg){
+void printListBackward(DoublyListNode* tailNode, string msg) {
     cout << endl << msg << endl;
-    for (DoublyListNode* p = tailNode; p != nullptr; p = p->prev){
+    for (DoublyListNode* p = tailNode; p != nullptr; p = p->prev) {
         cout << p->val << "  ";
     }
     cout << endl;
@@ -47,8 +47,7 @@ int main(){
     vector<int> arr = {1, 2, 3, 4, 5};
     DoublyListNode* head =  createDoublyListNode(arr);
     DoublyListNode* tail = head;
-    for (; tail->next != nullptr; )
-    {
+    for (; tail->next != nullptr; ) {
         tail = tail->next;
     }
     printListForward(head, "doubly linked list:");
@@ -97,8 +96,7 @@ int main(){
 
     // // 中间删除，删除第四个节点
     // DoublyListNode* p = head;
-    // for (int i = 0; i < 2; i++)
-    // {
+    // for (int i = 0; i < 2; i++) {
     //     p = p->next;
     // }
     // DoublyListNode* toDelete = p->next;

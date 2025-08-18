@@ -11,27 +11,27 @@ class ListNode {
 
 // 将数组转化为单链表
 ListNode* createLinkedList(const vector<int> &arr) {
-        if (arr.empty()){
+        if (arr.empty()) {
             return nullptr;
         }
         ListNode* head = new ListNode(arr[0]);
         ListNode* cur = head;
-        for(int i = 1; i < arr.size(); i++){
+        for (int i = 1; i < arr.size(); i++) {
             cur->next = new ListNode(arr[i]);
             cur = cur->next;
         }
         return head;
     }
 
-void printList(ListNode* node, string msg){
+void printList(ListNode* node, string msg) {
     cout << endl << msg << endl;
-    for(ListNode* p = node; p != nullptr; p = p->next){
+    for (ListNode* p = node; p != nullptr; p = p->next) {
         cout << p->val << "  ";
     }
     cout << endl;
 }
 
-int main(){
+int main() {
     // 数组转为链表
     vector<int> arr{1, 2, 3, 4, 5};
     ListNode* head =  createLinkedList(arr);
@@ -78,7 +78,7 @@ int main(){
 
     // // 中间删除，删第四个节点
     // ListNode* p = head;
-    // for(int i = 0; i < 2; i++) {
+    // for (int i = 0; i < 2; i++) {
     //     p = p->next;
     // }
     // p->next = p->next->next;

@@ -106,8 +106,9 @@ int main(){
     arr.addLast(5);
     arr.addLast(9);
     arr.removeFirst();
-    cout << arr.getFirst();
-    cout << arr.size();
+    cout << arr.getFirst() << endl;
+    cout << arr.size() << endl;
+    cout << arr.getLast() << endl;
 
     return 0;
 }

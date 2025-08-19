@@ -97,9 +97,7 @@ class CycleArray {
                 throw runtime_error("Array is empty!");
             }
             return arr[(end - 1 + arr.size()) % arr.size()];
-        }
-
-        
+        }        
 };
 
 int main(){

@@ -3,25 +3,25 @@ using namespace std;
 
 // 单链表
 class ListNode {
-    public:
-        int val;
-        ListNode *next;
-        ListNode(int x) : val(x), next(NULL) {}
+public:
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
 };
 
 // 将数组转化为单链表
 ListNode* createLinkedList(const vector<int> &arr) {
-        if (arr.empty()) {
-            return nullptr;
-        }
-        ListNode* head = new ListNode(arr[0]);
-        ListNode* cur = head;
-        for (int i = 1; i < arr.size(); i++) {
-            cur->next = new ListNode(arr[i]);
-            cur = cur->next;
-        }
-        return head;
+    if (arr.empty()) {
+        return nullptr;
     }
+    ListNode* head = new ListNode(arr[0]);
+    ListNode* cur = head;
+    for (int i = 1; i < arr.size(); i++) {
+        cur->next = new ListNode(arr[i]);
+        cur = cur->next;
+    }
+    return head;
+}
 
 void printList(ListNode* node, string msg) {
     cout << endl << msg << endl;

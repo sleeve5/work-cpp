@@ -3,10 +3,10 @@ using namespace std;
 
 // 双链表
 class DoublyListNode {
-    public:
-        int val;
-        DoublyListNode *next, *prev;
-        DoublyListNode(int x): val(x), next(nullptr), prev(nullptr) {}
+public:
+    int val;
+    DoublyListNode *next, *prev;
+    DoublyListNode(int x): val(x), next(nullptr), prev(nullptr) {}
 };
 
 // 数组转双链表

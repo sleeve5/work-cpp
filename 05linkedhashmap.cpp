@@ -148,5 +148,5 @@ int main() {
     cout << endl;
     cout << myMap.get("d") << endl;
     myMap.remove("c");
-    cout << myMap.size();
+    cout << myMap.size() << endl;
 }

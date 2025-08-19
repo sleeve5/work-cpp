@@ -53,58 +53,58 @@ int main(){
     printListForward(head, "doubly linked list:");
     printListBackward(tail, "reversed doubly linked list:");
     
-    // // 头部插入
-    // DoublyListNode* headNode = new DoublyListNode({0});
-    // headNode->next = head;
-    // head->prev = headNode;
-    // head = headNode;
-    // printListForward(head, "doubly linked list adding head:");
+    // 头部插入
+    DoublyListNode* headNode = new DoublyListNode({0});
+    headNode->next = head;
+    head->prev = headNode;
+    head = headNode;
+    printListForward(head, "doubly linked list adding head:");
 
-    // // 尾部插入
-    // DoublyListNode* newNode = new DoublyListNode({6});
-    // tail->next = newNode;
-    // newNode->prev = tail;
-    // tail = newNode;
-    // printListForward(head, "doubly linked list adding tail:");
+    // 尾部插入
+    DoublyListNode* newNode = new DoublyListNode({6});
+    tail->next = newNode;
+    newNode->prev = tail;
+    tail = newNode;
+    printListForward(head, "doubly linked list adding tail:");
 
-    // // 中间插入，在第三个节点后插入666
-    // DoublyListNode* newNode = new DoublyListNode({666});
-    // DoublyListNode* p = head;
-    // for (int i = 0; i < 2; i++){
-    //     p = p->next;
-    // }
-    // // 先组装好新节点的prev，next，再插入到原节点之中
-    // newNode->prev = p;
-    // newNode->next = p->next;
-    // p->next = newNode;
-    // p->next->prev = newNode;
-    // printListForward(head, "doubly linked list adding after the 3rd:");
+    // 中间插入，在第三个节点后插入666
+    DoublyListNode* newNode = new DoublyListNode({666});
+    DoublyListNode* p = head;
+    for (int i = 0; i < 2; i++){
+        p = p->next;
+    }
+    // 先组装好新节点的prev，next，再插入到原节点之中
+    newNode->prev = p;
+    newNode->next = p->next;
+    p->next = newNode;
+    p->next->prev = newNode;
+    printListForward(head, "doubly linked list adding after the 3rd:");
 
-    // // 头部删除
-    // DoublyListNode* toDelete = head;
-    // head->next->prev = nullptr;
-    // head = head->next;
-    // toDelete->prev = nullptr; // 释放原head的next
-    // printListForward(head, "doubly linked list deleting head:");
+    // 头部删除
+    DoublyListNode* toDelete = head;
+    head->next->prev = nullptr;
+    head = head->next;
+    toDelete->prev = nullptr; // 释放原head的next
+    printListForward(head, "doubly linked list deleting head:");
 
-    // // 尾部删除
-    // DoublyListNode* toDelete = tail;
-    // tail->prev->next = nullptr;
-    // tail = tail->prev;
-    // toDelete->prev = nullptr;
-    // printListBackward(tail, "reversed doubly linked list deleting tail:");
+    // 尾部删除
+    DoublyListNode* toDelete = tail;
+    tail->prev->next = nullptr;
+    tail = tail->prev;
+    toDelete->prev = nullptr;
+    printListBackward(tail, "reversed doubly linked list deleting tail:");
 
-    // // 中间删除，删除第四个节点
-    // DoublyListNode* p = head;
-    // for (int i = 0; i < 2; i++) {
-    //     p = p->next;
-    // }
-    // DoublyListNode* toDelete = p->next;
-    // p->next = toDelete->next;
-    // toDelete->next->prev = p;
-    // toDelete->next = nullptr; // 释放被删节点的前后指针
-    // toDelete->prev = nullptr;
-    // printListForward(head, "doubly linked list deleting the 4th:");
+    // 中间删除，删除第四个节点
+    DoublyListNode* p = head;
+    for (int i = 0; i < 2; i++) {
+        p = p->next;
+    }
+    DoublyListNode* toDelete = p->next;
+    p->next = toDelete->next;
+    toDelete->next->prev = p;
+    toDelete->next = nullptr; // 释放被删节点的前后指针
+    toDelete->prev = nullptr;
+    printListForward(head, "doubly linked list deleting the 4th:");
     
     return 0;
 }

@@ -29,7 +29,7 @@ using namespace std;
 //         }
 // };
 
-// 下面实现hash链表
+// 下面实现hash链表，即 key 和 包含key、val的链表节点 组成了hash表
 template <typename K, typename V>
 class Node {
     public:

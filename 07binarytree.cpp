@@ -48,9 +48,9 @@ public:
         queue<TreeNode*> q;
         q.push(root);
         int depth = 0;
-        while (!q.empty()) {
+        while (!q.empty()) {                // 遍历层数
             int sz = q.size();
-            for (int i = 0; i < sz; i++) {
+            for (int i = 0; i < sz; i++) {  // 或while (sz-- > 0) {} 遍历每层的节点
                 TreeNode* cur = q.front();
                 res.push_back(cur->val);
                 if (cur->left != nullptr) {

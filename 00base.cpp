@@ -2,14 +2,16 @@
 using namespace std;
 int main()
 {
+    // 标准输入输出
     // int a = 10;
-    // standard output
+    // int b;
+    // cin << b;
     // cout << a << endl;
     // cout << "Hello" << "," << "World!" << endl;
     // string s = "abc";
     // cout << s << " " << a << endl;
 
-    // control flow
+    // 控制流
     // if (a > 5) {
     //     cout << "a > 5" << endl;
     // } else if (a == 5) {
@@ -18,7 +20,7 @@ int main()
     //     cout << "a < 5" << endl;
     // }
 
-    // // loop
+    // // 循环
     // for (int i = 0; i <5; i++) {
     //     cout << i << " ";
     // }
@@ -44,6 +46,9 @@ int main()
     // vector<int> arr;
     // for (int i = 0; i < 6; i++) {
     //     arr.push_back(i);               // 尾进
+    // }
+    // for (auto i : arr) {                // 范围循环
+    //     cout << i << endl;
     // }
     // arr.resize(5);                      // 改元素数量size
     // cout << arr.capacity() << endl;     // 打印容量16，每次指数级翻倍
@@ -71,16 +76,16 @@ int main()
     // map.clear();
 
     // deque是一个 “先进先出（FIFO）” 的容器，底层默认用 std::deque，只暴露 “队尾进、队头出” 的接口。平均O(1)
-    queue<int> q;
-    for (int i = 0; i < 5; i++) {
-        q.push(i);                      // 尾进
-    }
-    q.pop();                            // 头出
-    cout << q.size() << endl;           // 长度
-    while (!q.empty()) {
-        cout << q.front() << "  ";
-        q.pop();
-    }
+    // queue<int> q;
+    // for (int i = 0; i < 5; i++) {
+    //     q.push(i);                      // 尾进
+    // }
+    // q.pop();                            // 头出
+    // cout << q.size() << endl;           // 长度
+    // while (!q.empty()) {
+    //     cout << q.front() << "  ";
+    //     q.pop();
+    // }
     
     return 0;
 }

@@ -75,7 +75,7 @@ int main()
     // }
     // map.clear();
 
-    // deque是一个 “先进先出（FIFO）” 的容器，底层默认用 std::deque，只暴露 “队尾进、队头出” 的接口。平均O(1)
+    // queue是一个 “先进先出（FIFO）” 的容器，底层默认用 std::deque，只暴露 “队尾进、队头出” 的接口。平均O(1)
     // queue<int> q;
     // for (int i = 0; i < 5; i++) {
     //     q.push(i);                      // 尾进

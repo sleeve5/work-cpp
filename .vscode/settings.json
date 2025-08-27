@@ -11,7 +11,8 @@
         "memory_resource": "cpp",
         "ranges": "cpp",
         "regex": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "stdexcept": "cpp"
     },
     "markdown.validate.enabled": false,
     "cSpell.words": [

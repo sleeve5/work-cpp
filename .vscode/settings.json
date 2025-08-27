@@ -13,5 +13,12 @@
         "regex": "cpp",
         "ostream": "cpp"
     },
-    "markdown.validate.enabled": false
+    "markdown.validate.enabled": false,
+    "cSpell.words": [
+        "cout",
+        "endl",
+        "memset",
+        "nullptr",
+        "stdc"
+    ]
 }

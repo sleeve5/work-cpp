@@ -258,3 +258,255 @@ for (ListNode* p = head; p != nullptr; p = p->next) {
     std::cout << p->val << std::endl;
 }
 ```
+
+### 3 双链表
+
+双链表即为单链表+prev指针，可前向或者后向进行访问。
+
+双链表节点定义：
+
+```cpp
+class DoublyListNode {
+public:
+    int val;
+    DoublyListNode *next, *prev;
+    DoublyListNode(int x): val(x), next(nullptr), prev(nullptr) {}
+};
+```
+
+可将数组转化为一条双链表：
+
+```cpp
+DoublyListNode* createDoublyListNode(const vector<int>& arr) {
+    if (arr.size() == 0) {
+        return nullptr;
+    }
+    DoublyListNode* head = new DoublyListNode(arr[0]);
+    DoublyListNode* cur = head;
+    for (int i = 1; i < arr.size(); i++) {
+        DoublyListNode* newNode = new DoublyListNode(arr[i]);
+        cur->next = newNode;
+        newNode->prev = cur;
+        cur = cur->next;
+    }
+    return head;
+}
+```
+
+双链表的增：
+
+```cpp
+// 头部插入
+DoublyListNode* headNode = new DoublyListNode({0});
+headNode->next = head;
+head->prev = headNode;
+head = headNode;
+
+// 尾部插入
+DoublyListNode* newNode = new DoublyListNode({6});
+tail->next = newNode;
+newNode->prev = tail;
+tail = newNode;
+
+// 中间插入，在第三个节点后插入666
+DoublyListNode* newNode = new DoublyListNode({666});
+DoublyListNode* p = head;
+for (int i = 0; i < 2; i++){
+    p = p->next;
+}
+// 先组装好新节点的prev，next，再插入到原节点之中
+newNode->prev = p;
+newNode->next = p->next;
+p->next = newNode;
+p->next->prev = newNode;
+```
+
+双链表的删：
+
+```cpp
+// 头部删除
+DoublyListNode* toDelete = head;
+head->next->prev = nullptr;
+head = head->next;
+toDelete->prev = nullptr; // 释放原head的next
+
+// 尾部删除
+DoublyListNode* toDelete = tail;
+tail->prev->next = nullptr;
+tail = tail->prev;
+toDelete->prev = nullptr;
+
+// 中间删除，删除第四个节点
+DoublyListNode* p = head;
+for (int i = 0; i < 2; i++) {
+    p = p->next;
+}
+DoublyListNode* toDelete = p->next;
+p->next = toDelete->next;
+toDelete->next->prev = p;
+toDelete->next = nullptr; // 释放被删节点的前后指针
+toDelete->prev = nullptr;
+```
+
+双链表的改/查：
+
+```cpp
+// 从头节点向后遍历双链表
+for (DoublyListNode* p = head; p != nullptr; p = p->next) {
+    cout << p->val << endl;
+    tail = p;
+}
+
+// 从尾节点向前遍历双链表
+for (DoublyListNode* p = tail; p != nullptr; p = p->prev) {
+    cout << p->val << endl;
+}
+```
+
+### 4 环形数组
+
+对于普通数组，当索引i到达数组末尾元素时，i+1和arr.length取余数又会变成0，即会回到数组头部，这样就在逻辑上形成了一个环形数组，永远遍历不完。可以让我们用O(1)的时间在数组头部或尾部增删元素。
+
+环形数组的关键在于，它维护了两个指针start和end，start指向第一个有效元素的索引，end指向最后一个有效元素的下一个位置索引。
+
+这样，当我们在数组头部添加或删除元素时，只需要移动start索引，而在数组尾部添加或删除元素时，只需要移动end索引。
+
+当start, end移动超出数组边界（<0或>=arr.length）时，我们可以通过求模运算%让它们转一圈到数组头部或尾部继续工作，这样就实现了环形数组的效果。
+
+设计左开右闭的环形数组：
+
+```cpp
+template<typename T>
+class CycleArray {
+private:    
+    std::vector<T> arr;
+    int start;
+    int end;
+    int count;
+    CycleArray() : CycleArray(1) {}
+    explicit CycleArray(int size) : arr(size), start(0), end(0), count(0) {}
+};
+```
+
+环形数组的一些接口定义如下。
+
+环形数组的自动扩缩容辅助函数:
+
+```cpp
+private:
+void resize(int newSize) {
+    // 创建新的数组并复制元素
+    std::vector<T> newArr(newSize);
+    for (int i = 0; i < count; ++i) {
+        newArr[i] = arr[(start + i) % arr.size()];
+    }
+    arr = std::move(newArr);
+    // 重置 start 和 end 指针
+    start = 0;
+    end = count;
+}
+```
+
+环形数组的增：
+
+```cpp
+// 头部添加元素，时间复杂度 O(1)
+void addFirst(const T &val) {
+    if (isFull()) {
+        resize(arr.size() * 2);
+    }
+    // 左闭右开，左加，先移位，再赋值
+    start = (start - 1 + arr.size()) % arr.size();  // +arr.size()防止负数
+    arr[start] = val;
+    count++;
+}
+
+// 尾部添加元素，时间复杂度 O(1)
+void addLast(const T &val) {
+    if (isFull()) {
+        resize(arr.size() * 2);
+    }
+    // 左闭右开，右加，先赋值，再移位
+    arr[end] = val;
+    end = (end + 1) % arr.size();
+    count++;
+}
+```
+
+环形数组的删：
+
+```cpp
+// 删除数组头部元素，时间复杂度 O(1)
+void removeFirst() {
+    if (isEmpty()) {
+        throw runtime_error("Array is empty!");
+    }
+    arr[start] = T();
+    start = (start + 1) % arr.size();
+    count--;
+    // 缩容，留1/4冗余，防止频繁扩/缩容带来的性能损耗
+    if (count > 0 && count == arr.size() / 4) {
+        arr.resize(arr.size() / 2);
+    }
+}
+
+// 尾部添加元素，时间复杂度 O(1)
+void removeLast() {
+    if (isEmpty()) {
+        throw runtime_error("Array is empty!");
+    }
+    // 左闭右开，右减，先移位，再赋值
+    end = (end - 1 + arr.size()) % arr.size();
+    arr[end] = T();
+    count--;
+    // 缩容，留1/4冗余，防止频繁扩/缩容带来的性能损耗
+    if (count > 0 && count == arr.size() / 4) {
+        arr.resize(arr.size() / 2);
+    }
+}
+```
+
+环形数组的改/查，同动态数组一样，需要进行遍历，为O(N)。
+
+```cpp
+// 获取数组头部元素，时间复杂度 O(1)
+T getFirst() const {
+    if (isEmpty()) {
+        throw std::runtime_error("Array is empty");
+    }
+    return arr[start];
+}
+
+// 获取数组尾部元素，时间复杂度 O(1)
+T getLast() const {
+    if (isEmpty()) {
+        throw std::runtime_error("Array is empty");
+    }
+    // end 是开区间，指向的是下一个元素的位置，所以要减 1
+    return arr[(end - 1 + arr.size()) % arr.size()];
+}
+```
+
+判断环形数组是否为满：
+
+```cpp
+bool isFull() const {
+    return count == arr.size();
+}
+```
+
+判断环形数组是否为空：
+
+```cpp
+bool isEmpty() const {
+    return count == 0;
+}
+```
+
+查看动态数组的大小：
+
+```cpp
+int size() const {
+    return count;
+}
+```

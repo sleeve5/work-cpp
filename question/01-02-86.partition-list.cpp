@@ -53,6 +53,7 @@ public:
                 p2->next = head;
                 p2 = p2->next;
             }
+            // 设置head的步进，要断开上个节点
             ListNode* tmp = head;
             head = head->next;
             tmp->next = nullptr;

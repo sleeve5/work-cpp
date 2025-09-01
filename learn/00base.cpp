@@ -89,7 +89,7 @@ int main()
 
     // // 优先级队列priority_queue，即二叉堆是一种能够动态排序的数据结构，是二叉树结构的延伸。默认是大顶堆（top最大），所有操作O(log n)。
     // priority_queue<int> maxHeap;    // 大顶堆
-    // priority_queue<int, vector<int>, greater<int>> minHeap; // 小顶堆
+    // priority_queue<int, vector<int>, greater<int>> minHeap; // 小顶堆，greater比较器，a>b，返回1，将a下沉；否则返回0，a上浮
     // maxHeap.push(1);
     // maxHeap.push(3);
     // maxHeap.push(4);

@@ -63,7 +63,7 @@ int main()
     // arr.reserve(10);                    // 改容量capacity
     // arr.clear();                        // 清空所有元素
 
-    // //  C++ 标准库提供的 哈希表（Hash Table） 容器，用来存放 键-值对（key-value pairs），无序（遍历顺序与插入顺序无关）。平均常数时间 O(1) 的插入、查找、删除（最坏退化到 O(n)）。
+    // //  C++标准库提供的哈希表（Hash Table）容器，用来存放键-值对（key-value pairs），无序（遍历顺序与插入顺序无关）。平均常数时间O(1)的插入、查找、删除（最坏退化到 O(n)）。
     // unordered_map<string, int> map;
     // map["apple"] = 5;
     // map.emplace("banana", 3);
@@ -75,7 +75,7 @@ int main()
     // }
     // map.clear();
 
-    // queue是一个 “先进先出（FIFO）” 的容器，底层默认用 std::deque，只暴露 “队尾进、队头出” 的接口。平均O(1)
+    // // queue是一个“先进先出（FIFO）”的容器，底层默认用std::deque，只暴露“队尾进、队头出”的接口。平均O(1)
     // queue<int> q;
     // for (int i = 0; i < 5; i++) {
     //     q.push(i);                      // 尾进
@@ -85,6 +85,19 @@ int main()
     // while (!q.empty()) {
     //     cout << q.front() << "  ";
     //     q.pop();
+    // }
+
+    // // 优先级队列priority_queue，即二叉堆是一种能够动态排序的数据结构，是二叉树结构的延伸。默认是大顶堆（top最大），所有操作O(log n)。
+    // priority_queue<int> maxHeap;    // 大顶堆
+    // priority_queue<int, vector<int>, greater<int>> minHeap; // 小顶堆
+    // maxHeap.push(1);
+    // maxHeap.push(3);
+    // maxHeap.push(4);
+    // maxHeap.push(2);
+    // maxHeap.push(5);
+    // while (!maxHeap.empty()) {
+    //     cout << maxHeap.top() << "  ";
+    //     maxHeap.pop();
     // }
     
     return 0;

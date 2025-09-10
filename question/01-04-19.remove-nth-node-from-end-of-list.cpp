@@ -43,22 +43,22 @@ public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         ListNode* dummy = new ListNode(0);
         dummy->next = head;
-        ListNode* p2 = findFromEnd(dummy, n+1);
-        p2->next = p2->next->next;
+        ListNode* p = findFromEnd(dummy, n+1);
+        p->next = p->next->next;
         return dummy->next;
     }
 
     ListNode* findFromEnd(ListNode* head, int n) {
-        ListNode* p1 = head;
-        ListNode* p2 = head;
+        ListNode* fast = head;
+        ListNode* slow = head;
         for (int i = 0; i < n; i++) {
-            p1 = p1->next;
+            fast = fast->next;
         }
-        while (p1 != nullptr) {
-            p1 = p1->next;
-            p2 = p2->next;
+        while (fast != nullptr) {
+            fast = fast->next;
+            slow = slow->next;
         }
-        return p2;
+        return slow;
     }
 };
 // @lc code=end

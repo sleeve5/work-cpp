@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main()
-{
+int main() {
     // 标准输入输出
     // int a = 10;
     // int b;

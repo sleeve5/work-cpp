@@ -56,6 +56,7 @@ public:
         traverse(right->next);
         if (left->val != right->val) {
             res = false;
+            return;
         }
         left = left->next;
     }

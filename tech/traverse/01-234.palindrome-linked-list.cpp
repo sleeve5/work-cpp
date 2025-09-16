@@ -38,27 +38,62 @@ public:
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// class Solution {
+// public:
+//     ListNode* left;
+//     ListNode* right;
+//     bool res = true;
+//     bool isPalindrome(ListNode* head) {
+//         left = head;
+//         right = head;
+//         traverse(right);
+//         return res;
+//     }
+//     void traverse(ListNode* right) {
+//         if (!right) {
+//             return;
+//         }
+//         traverse(right->next);
+//         if (left->val != right->val) {
+//             res = false;
+//             return;
+//         }
+//         left = left->next;
+//     }
+// };
 class Solution {
 public:
-    ListNode* left;
-    ListNode* right;
-    bool res = true;
     bool isPalindrome(ListNode* head) {
-        left = head;
-        right = head;
-        traverse(right);
-        return res;
+        ListNode* fast = head, *slow = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        if (fast) {
+            slow = slow->next;
+        }
+        ListNode* left = head;
+        ListNode* right = reverse(slow);
+        while (right) {
+            if (left->val != right->val) {
+                return false;
+            }
+            left = left->next;
+            right = right->next;
+        }
+        return true;
     }
-    void traverse(ListNode* right) {
-        if (!right) {
-            return;
+
+    ListNode* reverse(ListNode* head) {
+        ListNode* cur = head;
+        ListNode* pre = nullptr;
+        while (cur) {
+            ListNode* next = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = next;
         }
-        traverse(right->next);
-        if (left->val != right->val) {
-            res = false;
-            return;
-        }
-        left = left->next;
+        return pre;
     }
 };
 // @lc code=end

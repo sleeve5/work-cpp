@@ -69,9 +69,6 @@ public:
             slow = slow->next;
             fast = fast->next->next;
         }
-        if (fast) {
-            slow = slow->next;
-        }
         ListNode* left = head;
         ListNode* right = reverse(slow);
         while (right) {
@@ -80,6 +77,7 @@ public:
             }
             left = left->next;
             right = right->next;
+            if (left == right) break;
         }
         return true;
     }

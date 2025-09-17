@@ -31,7 +31,22 @@ public:
 class Solution {
 public:
     bool isPalindrome(string s) {
-        
+        string str;
+        for (auto i : s) {
+            if (isalnum(i)) {
+                str += tolower(i);
+            }
+        }
+        int left = 0, right = str.length() - 1;
+        bool res = true;
+        while (left < right) {
+            if (str[left] != str[right]) {
+                res = false;
+            }
+            left++;
+            right--;
+        }
+        return res;
     }
 };
 // @lc code=end

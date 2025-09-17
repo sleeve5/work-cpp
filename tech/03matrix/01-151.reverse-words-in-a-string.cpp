@@ -34,7 +34,7 @@ public:
         if (s.empty()) {
             return s;
         }
-        s = reverse(s);
+        reverse(s.begin(), s.end());
         string newString = "";
         string sub = "";
         bool inWord = false;
@@ -45,26 +45,21 @@ public:
                 continue;
             }
             if (inWord) {
-                newString += (reverse(sub) + ' ');
+                reverse(sub.begin(), sub.end());
+                newString += (sub + ' ');
                 sub.clear();
                 inWord = false;
             }
         }
         if (!sub.empty()) {                 // 处理最后一段
-            newString += reverse(sub);
+            reverse(sub.begin(), sub.end());
+            newString += (sub + ' ');
         }
         while (newString.back() == ' ') {
             newString.pop_back();
         }
         return newString;
     }
-
-    string reverse(string s) {
-    for (int i = 0; i < s.length() / 2; i++) {
-        swap(s[i], s[s.length() - 1 - i]);
-    }
-    return s;
-}
 };
 
 // @lc code=end

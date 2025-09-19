@@ -49,7 +49,7 @@ public:
             while (right - left >= p.size()) {
                 char d = s[left];
                 if (valid == need.size()) {
-                        res.push_back(left);
+                    res.push_back(left);
                 }
                 if (need.count(d)) {
                     if (window[d] == need[d]) {

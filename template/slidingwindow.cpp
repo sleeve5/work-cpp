@@ -4,24 +4,23 @@ using namespace std;
 // 滑动窗口法伪代码
 
 void slidingwindow(string s) {
-    auto window, need = datastrucure;
+    queue<int> window, need = {};       // 所需数据结构类型
     int left = 0, right = 0;
     while (right < s.size()) {
         char c = s[right];
-        if (need c) {
-            window.add(c);
+        if (c) {                        // 若窗口增大，需要进行数据更新
+            window.push(c);
         }
         // other data update;
-
         right++;
-        while (window moves left) {
+        while (left < right) {          // 窗口缩小的条件
             char d = s[left];
-            if (need d) {
-                window.remove(d);
+            if (!d) {                    // 若窗口缩小，需要进行数据更新
+                window.pop();
             }
             // other data update;
-            
             left++;
         }
     }
+    return;
 }

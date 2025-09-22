@@ -1,7 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 滑动窗口法伪代码
+// 1、什么时候应该移动 right 扩大窗口？窗口加入字符时，应该更新哪些数据？
+// 2、什么时候窗口应该暂停扩大，开始移动 left 缩小窗口？从窗口移出字符时，应该更新哪些数据？
+// 3、什么时候应该更新结果？
 
 void slidingwindow(string s) {
     queue<int> window, need = {};       // 所需数据结构类型

@@ -27,7 +27,7 @@ public:
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) { }
 };
 
-@lc code=start
+// @lc code=start
 class Solution {
 public:
     int shipWithinDays(vector<int>& weights, int days) {

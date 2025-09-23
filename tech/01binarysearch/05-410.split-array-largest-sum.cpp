@@ -33,7 +33,7 @@ public:
     int splitArray(vector<int>& nums, int k) {
         return shipWithinDays(nums, k);
     }
-
+    
     int shipWithinDays(vector<int>& weights, int days) {
         int minCap = 1, maxCap = 0;
         for (auto i : weights) {

@@ -31,19 +31,37 @@ public:
 class Solution {
 public:
     int shipWithinDays(vector<int>& weights, int days) {
-        
+        int minCap = 1, maxCap = 0;
+        for (auto i : weights) {
+            maxCap += i;
+            minCap = max(minCap, i);
+        }
+        while (minCap <= maxCap) {
+            int midCap = minCap + (maxCap - minCap) / 2;
+            if (shipdDays(weights, midCap) == days) {
+                maxCap = midCap - 1;
+            } else if (shipdDays(weights, midCap) < days) {
+                maxCap = midCap - 1;
+            } else if (shipdDays(weights, midCap) > days) {
+                minCap = midCap + 1;
+            }
+        }
+        return minCap;
     }
 
     int shipdDays(vector<int>& weights, int cap) {
         int days = 0;
-        int x = cap;
-        for (int i = 0; i < weights.size(); i++) {
-            if (x > weights[i]) {
-                x -= weights[i];
-                if (i < weights.size() - 1) continue;
+        for (int i = 0; i < weights.size();) {
+            int x = cap;
+            while (i < weights.size()) {
+                if (x < weights[i]) {
+                    break;
+                } else {
+                    x -= weights[i];
+                }
+                i++;
             }
             days++;
-            x = cap - weights[i];
         }
         return days;
     }

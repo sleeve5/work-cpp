@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 前缀和，适用于快速、频繁地计算一个索引区间内的元素之和即数列求和
+// 通过presum[j+1] - presum[i]来计算[i, j]内的和
+
 class PreSum {
 public:
     vector<int> presum;
@@ -16,8 +19,3 @@ public:
         return presum[i + 1] - presum[j];
     }
 };
-
-
-
-
-

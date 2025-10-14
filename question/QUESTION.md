@@ -48,7 +48,6 @@ class ListNode {
 - [160.相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/ "160.相交链表")
 - ~~[82.删除排序链表中的重复元素](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/ "82.删除排序链表中的重复元素")~~
 
-
 #### 快慢指针法
 
 两指针步长不一致，同时同位置释放。
@@ -56,4 +55,26 @@ class ListNode {
 - [876.链表的中间结点](https://leetcode.cn/problems/middle-of-the-linked-list/ "876.链表的中间结点")
 - [142.环形链表 Ⅱ](https://leetcode.cn/problems/linked-list-cycle-ii/ "142.环形链表 Ⅱ")
 
+#### 递归法
 
+通过递归函数的定义，把原问题分解成若干规模更小、结构相同的子问题，最后通过子问题的答案组装原问题的解。
+
+```cpp
+class Solution {
+public:
+    // 定义：输入一个单链表头结点，将该链表反转，返回新的头结点
+    ListNode* reverseList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) {
+            return head;
+        }
+        ListNode* last = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return last;
+    }
+};
+```
+
+- [206.反转链表](https://leetcode.cn/problems/reverse-linked-list/ "206.反转链表")
+- [25.K个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/ "25.K个一组翻转链表")
+- [92.反转链表 Ⅱ](https://leetcode.cn/problems/reverse-linked-list-ii/ "92.反转链表 Ⅱ")
